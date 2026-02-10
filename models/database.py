@@ -2,9 +2,31 @@
 from sqlite3 import Connection, connect, Cursor
 from types import TracebackType
 from typing import Any, Optional, Self, Type 
+from dotenv import load_dotenv
 import traceback
+import os 
+
+load_dotenv()
+DB_PATH = os.getenv('DATABASE', './data/tarefas.sqlite3')
+
+def init_db(db_name: str = DB_PATH) -> None:
+    with connect(db_name) as conn:
+        conn.execute('''
+        CREATE TABLE IF NOT EXISTS tarefas (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            titulo_tarefa TEXT NOT NULL,
+            data_conclusao TEXT);
+        ''')
+
 class Database:
-    def __init__(self, db_name: str) -> None :
+    """ 
+    Classe para gerenciar a conexão e operações com um banco de dados SQLite,
+    utilizando o módulo 'sqlite3' e implementando o protocolo de gerenciamento de contexto 
+    para garantir o fechamento adequado da conexão, mesmo em caso de exceções.
+    
+    """ 
+
+    def __init__(self, db_name: str = DB_PATH) -> None :
         self.connection: Connection = connect(db_name)
         self.cursor: Cursor = self.connection.cursor()
 
@@ -43,15 +65,3 @@ class Database:
         self.close()
 
 
-# Área de Testes
-# try:
-#     db = Database('./data/tarefas.sqlite3')
-#     db.executar('''
-#     CREATE TABLE IF NOT EXISTS tarefas (
-#         id INTEGER PRIMARY KEY AUTOINCREMENT,
-#         titulo_tarefa TEXT NOT NULL,
-#         data_conclusao TEXT);
-#     ''')
-#     db.executar(" INSERT INTO tarefas (titulo_tarefa, data_conclusao) VALUES (?, ?);", ("Estudar Python", "2026-01-29"))
-# except Exception as e:
-#     print(f"Erro ao criar tabela: {e}")

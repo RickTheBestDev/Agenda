@@ -1,131 +1,171 @@
-/* =========================
-   ESTILO GERAL
-========================= */
-body {
+/* RESET */
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* =========================
-   CONTAINER DA PÁGINA
-========================= */
-.pagina {
+/* FUNDO GERAL */
+body {
+    background: linear-gradient(135deg, #111, #1e1e1e);
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
 
+/* CONTAINER PRINCIPAL */
+.pagina {
+    width: 95%;
+    max-width: 800px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    color: #333;
+}
+
+/* TITULOS */
+.titulo {
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* FORM */
+form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
-/* =========================
-   TÍTULO
-========================= */
-h1 {
+/* INPUTS */
+.input-bonito {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.input-bonito:focus {
+    outline: none;
+    border: 1px solid #000;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+/* BOTÕES */
+button,
+.botao-link,
+a.btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+/* BOTÃO PRINCIPAL */
+.btn-adicionar {
+    background: #000;
+    color: #fff;
+}
+
+.btn-adicionar:hover {
+    background: #333;
+}
+
+/* BOTÕES SECUNDÁRIOS */
+.btn-danger {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background: #cc0000;
+}
+
+.btn-success {
+    background: #28a745;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background: #1e7e34;
+}
+
+.btn-secondary {
+    background: #666;
+    color: #fff;
+}
+
+/* LISTA */
+ul {
+    list-style: none;
+}
+
+li {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+li:hover {
+    transform: scale(1.02);
+}
+
+/* TAREFA FINALIZADA */
+.tarefa-encerrado {
+    background: #d4edda;
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+/* LINKS DENTRO DA TAREFA */
+li a {
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+/* HOME */
+.home {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.boas-vindas {
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
-/* =========================
-   FORMULÁRIO
-========================= */
-form {
-    background-color: white;
-    padding: 20px;
-    width: 320px;
-
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-
-    display: flex;
-    flex-direction: column;
-}
-
-/* =========================
-   INPUTS
-========================= */
-form input {
-    margin-bottom: 12px;
-    padding: 10px;
-    font-size: 14px;
-
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-form input:focus {
-    outline: none;
-    border-color: #4f46e5;
-}
-
-/* =========================
-   BOTÃO
-========================= */
-form button {
-    padding: 10px;
-    background-color: #5ee546;
-    color: white;
-
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #3b34c4;
-}
-
-/* =========================
-   TAREFA (CARD)
-========================= */
-.tarefa {
-    margin-top: 20px;
-    width: 320px;
-    background-color: white;
-    padding: 15px;
-
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-
-    text-align: center;
-}
-
-.tarefa h3 {
-    margin-bottom: 5px;
-}
-
-.tarefa .data {
-    font-size: 13px;
-    color: #667;
-}/* =========================
-   HOME
-========================= */
-.home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-/* TEXTO */
-.boas-vindas {
-    font-size: 18px;
-    color: #333333;
-}
-
-/* LINK COMO BOTÃO */
 .botao-link {
-    text-decoration: none;
-    background-color: #6e8646;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-weight: bold;
-
-    transition: background-color 0.3s;
+    background: #000;
+    color: #fff;
+    padding: 12px 20px;
 }
 
-/* HOVER */
 .botao-link:hover {
-    background-color: #34c43e;}
+    background: #333;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    .pagina {
+        padding: 20px;
+    }
+
+    li {
+        font-size: 14px;
+    }
+}

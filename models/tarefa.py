@@ -8,7 +8,7 @@ class Tarefa:
     """
 
     def __init__(self: Self, titulo_tarefa: Optional[str], data_conclusao: Optional[str] = None,
-      encerrado: Optional[int] = 0, id_tarefa: Optional[int]= None)-> None:
+      encerrado: Optional[int]= 0, id_tarefa: Optional[int]= None)-> None:
         self.titulo_tarefa: Optional[str] = titulo_tarefa
         self.data_conclusao: Optional[str] = data_conclusao
         self.encerrado: Optional[int] = encerrado

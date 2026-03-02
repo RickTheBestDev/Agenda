@@ -12,7 +12,7 @@
                placeholder="Digite a tarefa..."
                value="{{ tarefa_selecionada.titulo_tarefa if tarefa_selecionada else '' }}"
                required>
-
+  
         <input type="date" 
                name="data-conclusao" 
                class="input-bonito"
@@ -33,11 +33,13 @@
     {% if tarefas %}
         <ul>
             {% for tarefa in tarefas %}
-                <li class="tarefa-finalizada {% if tarefa.encerrado == 1 %}tarefa-encerrado{% endif %}">
+                <li>
                   
 
                 
-                    {{ tarefa.titulo_tarefa }} - {{ tarefa.data_conclusao }}
+                    <span class="tarefa-finalizada {% if tarefa.encerrado == 1 %}tarefa-encerrado{% endif %}">
+                        {{ tarefa.titulo_tarefa }} - {{ tarefa.data_conclusao }}
+                    </span>
 
                     <a href="{{ url_for('update', idTarefa=tarefa.id_tarefa) }}">
                         👌 Editar

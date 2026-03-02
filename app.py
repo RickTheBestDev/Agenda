@@ -5,11 +5,8 @@ from models.database import init_db
 app = Flask(__name__)
 
 init_db()
-@app.route('/')
-def home():
-    return render_template('home.html', titulo='Home')
 
-@app.route('/agenda', methods=['GET','POST'])
+@app.route('/', methods=['GET','POST'])
 def agenda():
     tarefas = None
 
@@ -42,7 +39,7 @@ def update(idTarefa):
     if request.method == 'POST':
         titulo_tarefa = request.form['titulo-tarefa']
         data_conclusao = request.form['data-conclusao']
-        tarefa = Tarefa(titulo_tarefa, data_conclusao,idTarefa)
+        tarefa = Tarefa(titulo_tarefa, data_conclusao,id_tarefa=idTarefa)
         tarefa.atualizar_tarefa()
 
     tarefas = Tarefa.obter_tarefas()
